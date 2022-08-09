@@ -2,8 +2,13 @@ package ru.netology.radio;
 
 public class Radio {
 
-    public int currentStation;
-    public int currentVolume;
+    private int currentStation;
+    private int currentVolume;
+    private int maxStation = 9;
+    private int minStation = 0;
+    private int maxVolume = 10;
+    private int minVolume = 0;
+
 
     public int getCurrentVolume() {
         return currentVolume;
@@ -14,37 +19,42 @@ public class Radio {
     }
 
     public void setToMaxVolume() {
-        currentVolume = 10;
+        currentVolume = maxVolume;
     }
 
     public void setToMaxStation() {
-        currentStation = 9;
+        currentStation = maxStation;
     }
 
 
     public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
+        if (newCurrentVolume < minVolume) {
             return;
         }
-        if (newCurrentVolume > 10) {
+        if (newCurrentVolume >= maxVolume) {
             return;
         }
         currentVolume = newCurrentVolume;
     }
 
+
     public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation < 0) {
+        if (newCurrentStation < minStation) {
             return;
         }
-        if (newCurrentStation > 9) {
+        if (newCurrentStation > maxStation) {
             return;
+
         }
         currentStation = newCurrentStation;
     }
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
+        }
+        if (currentVolume >= maxVolume) {
+            currentVolume = 10;
         }
     }
 
@@ -55,8 +65,11 @@ public class Radio {
     }
 
     public void nextStation() {
-        if (currentStation < 9) {
+        if (currentStation < maxStation) {
             currentStation = currentStation + 1;
+        }
+        if (currentStation >= maxStation) {
+            currentStation = 0;
         }
     }
 
@@ -65,5 +78,5 @@ public class Radio {
             currentStation = currentStation - 1;
         }
     }
-
 }
+

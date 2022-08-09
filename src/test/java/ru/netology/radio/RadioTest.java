@@ -30,7 +30,7 @@ public class RadioTest {
     @Test
     public void shouldNotSetVolumeAboveMax() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(15);
+        radio.setCurrentVolume(11);
 
         int expected = 0;
         int actual = radio.getCurrentVolume();
@@ -63,13 +63,28 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldIncreaseVolumeMoreThenMax() {
+
+    public void shouldIncreaseVolume2() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(0);
+
+        radio.increaseVolume();
+
+        int expected = 1;
+        int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void IncreaseVolumeMoreThenMax() {
         Radio radio = new Radio();
         radio.setCurrentVolume(11);
 
         radio.increaseVolume();
 
-        int expected = 0;
+        int expected = 1;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -89,7 +104,20 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldDecreaseVolumeMoreThenMin() {
+    public void decreaseVolumeNull() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(0);
+
+        radio.decreaseVolume();
+
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void decreaseVolumeNegative() {
         Radio radio = new Radio();
         radio.setCurrentVolume(-1);
 
@@ -149,11 +177,11 @@ public class RadioTest {
     @Test
     public void switchToNextStation() {
         Radio radio = new Radio();
-        radio.setCurrentStation(8);
+        radio.setCurrentStation(7);
 
         radio.nextStation();
 
-        int expected = 9;
+        int expected = 8;
         int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -162,11 +190,24 @@ public class RadioTest {
     @Test
     public void switchToNextStationAboveMax() {
         Radio radio = new Radio();
-        radio.setCurrentStation(10);
+        radio.setCurrentStation(9);
 
         radio.nextStation();
 
         int expected = 0;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void switchToNextStationOnNull() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(0);
+
+        radio.nextStation();
+
+        int expected = 1;
         int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
