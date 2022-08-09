@@ -17,17 +17,6 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldSetToMaxVolume() {
-        Radio radio = new Radio();
-        radio.setToMaxVolume();
-
-        int expected = 10;
-        int actual = radio.getCurrentVolume();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
     public void shouldNotSetVolumeAboveMax() {
         Radio radio = new Radio();
         radio.setCurrentVolume(11);
@@ -135,17 +124,6 @@ public class RadioTest {
         radio.setCurrentStation(2);
 
         int expected = 2;
-        int actual = radio.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldSetToMaxStation() {
-        Radio radio = new Radio();
-        radio.setToMaxStation();
-
-        int expected = 9;
         int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
