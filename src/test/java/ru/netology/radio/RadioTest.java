@@ -32,7 +32,7 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentVolume(11);
 
-        int expected = 0;
+        int expected = 10;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -80,11 +80,11 @@ public class RadioTest {
     @Test
     public void IncreaseVolumeMoreThenMax() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(11);
+        radio.setCurrentVolume(10);
 
         radio.increaseVolume();
 
-        int expected = 1;
+        int expected = 10;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
