@@ -155,11 +155,11 @@ public class RadioTest {
     @Test
     public void switchToNextStation() {
         Radio radio = new Radio();
-        radio.setCurrentStation(7);
+        radio.setCurrentStation(8);
 
         radio.nextStation();
 
-        int expected = 8;
+        int expected = 9;
         int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -207,11 +207,11 @@ public class RadioTest {
     @Test
     public void switchToPrevStationBelowMin() {
         Radio radio = new Radio();
-        radio.setCurrentStation(-1);
+        radio.setCurrentStation(0);
 
         radio.prevStation();
 
-        int expected = 0;
+        int expected = 9;
         int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);

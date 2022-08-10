@@ -93,17 +93,19 @@ public class Radio {
     }
 
     public void nextStation() {
-        if (currentStation < maxStation) {
-            currentStation = currentStation + 1;
-        }
         if (currentStation >= maxStation) {
             currentStation = 0;
+        } else {
+            currentStation = currentStation + 1;
         }
     }
 
     public void prevStation() {
         if (currentStation > 0) {
             currentStation = currentStation - 1;
+        }
+        if (currentStation <= 0) {
+            currentStation = 9;
         }
     }
 }
