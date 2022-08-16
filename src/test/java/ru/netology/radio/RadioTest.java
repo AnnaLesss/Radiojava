@@ -1,6 +1,5 @@
 package ru.netology.radio;
 
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -24,8 +23,7 @@ public class RadioTest {
 
 
     @Test
-<<<<<<< HEAD
-=======
+
     public void shouldSetToMaxVolume() {
         Radio radio = new Radio();
         radio.setToMaxVolume();
@@ -37,16 +35,13 @@ public class RadioTest {
     }
 
     @Test
->>>>>>> lombok
+
     public void shouldNotSetVolumeAboveMax() {
         Radio radio = new Radio();
         radio.setCurrentVolume(101);
 
-<<<<<<< HEAD
-        int expected = 10;
-=======
         int expected = 100;
->>>>>>> lombok
+
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -94,19 +89,13 @@ public class RadioTest {
     @Test
     public void IncreaseVolumeMoreThenMax() {
         Radio radio = new Radio();
-<<<<<<< HEAD
-        radio.setCurrentVolume(10);
 
-        radio.increaseVolume();
-
-        int expected = 10;
-=======
-        radio.setCurrentVolume(101);
+        radio.setCurrentVolume(100);
 
         radio.increaseVolume();
 
         int expected = 100;
->>>>>>> lombok
+
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -176,11 +165,11 @@ public class RadioTest {
 
 
     @Test
-    public void shouldNotSetStationAboveMax() {
-        Radio radio = new Radio(9);
-        radio.setCurrentStation(10);
+    public void SetStation() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(9);
 
-        int expected = 0;
+        int expected = 9;
         int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -199,21 +188,14 @@ public class RadioTest {
 
     @Test
     public void switchToNextStation() {
-<<<<<<< HEAD
-        Radio radio = new Radio();
-        radio.setCurrentStation(8);
 
-        radio.nextStation();
-
-        int expected = 9;
-=======
         Radio radio = new Radio(6);
         radio.setCurrentStation(6);
 
         radio.nextStation();
 
         int expected = 0;
->>>>>>> lombok
+
         int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -221,7 +203,7 @@ public class RadioTest {
 
     @Test
     public void switchToNextStationAboveMax() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(9);
         radio.setCurrentStation(9);
 
         radio.nextStation();
