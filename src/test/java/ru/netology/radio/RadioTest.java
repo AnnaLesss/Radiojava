@@ -1,8 +1,6 @@
 package ru.netology.radio;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -23,6 +21,7 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
 
     @Test
     public void shouldSetToMaxVolume() {
@@ -138,6 +137,18 @@ public class RadioTest {
     }
 
     @Test
+    public void shouldSetCurrentStation() {
+        Radio radio = new Radio(20);
+        radio.setCurrentStation(15);
+
+
+        int expected = 15;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSetStation() {
         Radio radio = new Radio();
         radio.setCurrentStation(2);
@@ -162,7 +173,7 @@ public class RadioTest {
 
     @Test
     public void shouldNotSetStationAboveMax() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(9);
         radio.setCurrentStation(10);
 
         int expected = 0;
@@ -184,12 +195,12 @@ public class RadioTest {
 
     @Test
     public void switchToNextStation() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(7);
+        Radio radio = new Radio(6);
+        radio.setCurrentStation(6);
 
         radio.nextStation();
 
-        int expected = 8;
+        int expected = 0;
         int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);

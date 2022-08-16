@@ -1,24 +1,71 @@
 package ru.netology.radio;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-
 public class Radio {
-
     private int currentStation;
     private int currentVolume;
     private int maxStation = 9;
     private int minStation = 0;
     private int maxVolume = 100;
     private int minVolume = 0;
+    private int numberStation;
+
 
     public Radio(int numberStation) {
+        this.numberStation = numberStation;
     }
+
+    public Radio() {
+        numberStation = 10;
+    }
+
+    public void setNumberStation(int numberStation) {
+        this.numberStation = numberStation;
+    }
+
+    public int getNumberStation() {
+        return numberStation;
+    }
+
+    public int getCurrentStation() {
+        return currentStation;
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public int getMaxStation() {
+        return maxStation;
+    }
+
+    public void setMaxStation(int maxStation) {
+        this.maxStation = maxStation;
+    }
+
+    public int getMinStation() {
+        return minStation;
+    }
+
+    public void setMinStation(int minStation) {
+        this.minStation = minStation;
+    }
+
+    public int getMaxVolume() {
+        return maxVolume;
+    }
+
+    public void setMaxVolume(int maxVolume) {
+        this.maxVolume = maxVolume;
+    }
+
+    public int getMinVolume() {
+        return minVolume;
+    }
+
+    public void setMinVolume(int minVolume) {
+        this.minVolume = minVolume;
+    }
+
 
     public void setToMaxVolume() {
         currentVolume = maxVolume;
@@ -44,7 +91,7 @@ public class Radio {
         if (newCurrentStation < minStation) {
             return;
         }
-        if (newCurrentStation > maxStation) {
+        if (newCurrentStation > numberStation) {
             return;
 
         }
@@ -67,10 +114,10 @@ public class Radio {
     }
 
     public void nextStation() {
-        if (currentStation < maxStation) {
+        if (currentStation < numberStation) {
             currentStation = currentStation + 1;
         }
-        if (currentStation >= maxStation) {
+        if (currentStation >= numberStation) {
             currentStation = 0;
         }
     }
